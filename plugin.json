@@ -1,0 +1,8 @@
+{
+  "id": "disturbance-check",
+  "name": "Disturbance Check",
+  "version": "0.2.1",
+  "description": "Delivered canopy disturbance layers with the public record they were checked against.",
+  "entry": "dist/index.js",
+  "style": "dist/style.css"
+}

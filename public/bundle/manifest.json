@@ -1,0 +1,80 @@
+{
+  "version": 1,
+  "project": "Example Forest Carbon Project, RP3",
+  "client": "Example Project Developer",
+  "boundary": null,
+  "boundaryAreaHa": null,
+  "analysedAreaHa": 1184516.6,
+  "periods": [
+    {
+      "id": "RP3",
+      "preStart": "2023-07-01",
+      "preEnd": "2023-08-31",
+      "postStart": "2024-07-01",
+      "postEnd": "2024-08-31",
+      "layers": [
+        {
+          "id": "dNDVI",
+          "label": "dNDVI - canopy loss",
+          "cog": "RP3-dNDVI.tif",
+          "breaks": {
+            "low": 0.1,
+            "moderate": 0.2,
+            "high": 0.35
+          },
+          "areasHa": [
+            10437.1,
+            4786.6,
+            3617.2
+          ],
+          "justification": null
+        },
+        {
+          "id": "dNDMI",
+          "label": "dNDMI - moisture stress",
+          "cog": "RP3-dNDMI.tif",
+          "breaks": {
+            "low": 0.15,
+            "moderate": 0.3,
+            "high": 0.45
+          },
+          "areasHa": [
+            10541.1,
+            4815.6,
+            3164.8
+          ],
+          "justification": null
+        },
+        {
+          "id": "dNBR",
+          "label": "dNBR - burn severity",
+          "cog": "RP3-dNBR.tif",
+          "breaks": {
+            "low": 0.1,
+            "moderate": 0.27,
+            "high": 0.44
+          },
+          "areasHa": [
+            139390.2,
+            19006.0,
+            8020.0
+          ],
+          "justification": null
+        }
+      ]
+    }
+  ],
+  "provenance": {
+    "script": "scripts/build-bundle.py",
+    "collection": "sentinel-2-l2a (Sentinel-2 L2A COGs on AWS Open Data)",
+    "cloudRemoval": "OmniCloudMask v4 ensemble on red, green and B8A decided at 40 m; snow, saturated and no-data from the Sen2Cor scene classification",
+    "scale": 20,
+    "runDate": "2026-08-16",
+    "analyst": "Prototype Tools"
+  },
+  "warnings": [
+    "The differenced windows are July to August 2023 against July to August 2024. RP3 runs 16 November 2024 to 15 November 2025, so these layers describe the year preceding the reporting period, not the reporting period itself.",
+    "Areas are reported over the project's bounding rectangle, not its boundary. Clip to the project shapefile before quoting hectares against the registry figure.",
+    "RP3 dNBR flags 14.0 percent of the 1,184,517 ha analysed. A share that large over an area that is not wholly forest is more consistent with seasonal difference between the two windows than with disturbance. Clip to the project boundary and re-read the histogram before quoting it."
+  ]
+}
